@@ -223,7 +223,7 @@
 
       <!-- Redirection vers une autre page -->
       <form class="search-row" action="success.html" method="GET">
-        <input id="name" name="name" type="text" placeholder="Enterprise Name" required />
+        <input id="enterprise" name="name" type="text" placeholder="Enterprise Name" required />
         <button type="submit" aria-label="Valider">
           <span class="icon-check"></span>
         </button>
@@ -238,6 +238,40 @@
       <span>OneTap</span>
     </a>
   </div>
+    <script>
+    const form = document.getElementById("checkin-form");
+
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const enterprise = document.getElementById("enterprise").value.trim();
+      if (!enterprise) return;
+      const now = new Date();
+
+      const payload = {
+        name: enterprise,
+        date_heure: now.toLocaleString("fr-FR"),
+        userAgent: navigator.userAgent,
+        page: window.location.href
+      };
+
+      try {
+        await fetch("https://script.google.com/macros/s/AKfycbyTrnIc8mVTnytskshcCGxR-vjx2AsSHioBD-1OYwFClirdlNfSqo_tV1wHk59vZ6t3Fw/exec", {
+          method: "POST",
+          mode: "cors",
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        window.location.href = "success.html";
+      } catch (err) {
+        console.error(err);
+        alert("Erreur lors de l'enregistrement");
+      }
+    });
+  </script>
 </body>
 </html>
 
