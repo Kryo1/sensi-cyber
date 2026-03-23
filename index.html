@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sensibilisation à la cybersécurité</title>
+  <style>
+    :root {
+      --bg: #f3f3f5;
+      --card-bg: #ffffff;
+      --border: #dcdde1;
+      --muted: #8b9098;
+      --text: #4a4f57;
+      --title: #50555d;
+      --button: #28a745;
+      --button-hover: #1e7e34;
+      --accent-1: #ffbf00;
+      --accent-2: #ff8a00;
+      --accent-3: #ff3d00;
+      --brand: #1a73e8;
+      --shadow: 0 1px 0 rgba(0,0,0,0.03);
+      --radius: 8px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .wrapper {
+      width: 100%;
+      max-width: 520px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 34px;
+    }
+
+    .card {
+      width: 100%;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      position: relative;
+      padding: 42px 16px 34px;
+      text-align: center;
+    }
+
+    .logo-badge {
+      position: absolute;
+      top: -41px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 64px;
+      height: 64px;
+      background: #fff;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+    }
+
+    .mini-logo {
+      position: relative;
+      width: 30px;
+      height: 30px;
+    }
+
+    .mini-logo::before,
+    .mini-logo::after,
+    .mini-logo span,
+    .mini-logo i {
+      content: "";
+      position: absolute;
+      display: block;
+    }
+
+    .mini-logo::before {
+      width: 22px;
+      height: 10px;
+      right: 0;
+      top: 0;
+      background: linear-gradient(90deg, var(--accent-2), var(--accent-3));
+    }
+
+    .mini-logo::after {
+      width: 10px;
+      height: 22px;
+      right: 0;
+      top: 0;
+      background: linear-gradient(180deg, var(--accent-3), var(--accent-2));
+    }
+
+    .mini-logo span {
+      width: 10px;
+      height: 10px;
+      left: 8px;
+      top: 12px;
+      background: linear-gradient(180deg, #ffd54a, var(--accent-1));
+    }
+
+    .mini-logo i {
+      width: 10px;
+      height: 10px;
+      left: 0;
+      bottom: 0;
+      background: linear-gradient(180deg, #ffd54a, var(--accent-2));
+      font-style: normal;
+    }
+
+    h1 {
+      margin: 18px 0 10px;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--title);
+    }
+
+    .datetime {
+      color: var(--muted);
+      font-size: 15px;
+      margin-bottom: 18px;
+    }
+
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: #ececef;
+      margin: 0 0 16px;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      color: var(--title);
+      margin-bottom: 18px;
+    }
+
+    .search-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .search-row input {
+      flex: 1;
+      height: 32px;
+      border: 1px solid #cfd3d8;
+      border-radius: 4px;
+      padding: 0 12px;
+      outline: none;
+      font-size: 14px;
+      color: var(--text);
+      background: #fff;
+    }
+
+    .search-row input:focus {
+      border-color: #aeb4bb;
+      box-shadow: 0 0 0 2px rgba(26,115,232,0.08);
+    }
+
+    .search-row button {
+      width: 37px;
+      height: 31px;
+      border: none;
+      border-radius: 4px;
+      background: var(--button);
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: background 0.2s ease;
+    }
+
+    .search-row button:hover {
+      background: var(--button-hover);
+    }
+
+    .icon-check {
+      width: 14px;
+      height: 14px;
+      border: solid #fff;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+      display: inline-block;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--brand);
+      text-decoration: none;
+      font-size: 34px;
+    }
+
+    .brand svg {
+      width: 30px;
+      height: 30px;
+      stroke: var(--brand);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <section class="card">
+      <div class="logo-badge">
+        <div class="mini-logo"><span></span><i></i></div>
+      </div>
+
+      <h1>Sensibilisation à la cybersécurité</h1>
+      <div class="datetime">Mar 24, 10 AM - 12 PM</div>
+      <div class="divider"></div>
+      <div class="subtitle">Let's check you in!</div>
+
+      <!-- Redirection vers une autre page -->
+      <form class="search-row" action="success.html" method="GET">
+        <input id="name" name="name" type="text" placeholder="Search for your name here" required />
+        <button type="submit" aria-label="Valider">
+          <span class="icon-check"></span>
+        </button>
+      </form>
+    </section>
+
+    <a class="brand" href="#">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 11V5a2 2 0 1 0-4 0v8" />
+        <path d="M8 13V8a2 2 0 1 0-4 0v7c0 3.3 2.7 6 6 6h2a6 6 0 0 0 6-6v-3.2a1.8 1.8 0 0 0-3.5-.6l-.5 1.3V9a2 2 0 1 0-4 0v2" />
+      </svg>
+      <span>OneTap</span>
+    </a>
+  </div>
+</body>
+</html>
+
