@@ -222,7 +222,7 @@
       <div class="subtitle">Let's check you in!</div>
 
       <!-- Redirection vers une autre page -->
-      <form class="search-row" action="success.html" method="GET">
+      <form class="search-row" id="checkin-form">
         <input id="enterprise" name="name" type="text" placeholder="Enterprise Name" required />
         <button type="submit" aria-label="Valider">
           <span class="icon-check"></span>
@@ -238,39 +238,47 @@
       <span>OneTap</span>
     </a>
   </div>
-    <script>
+  <script>
     const form = document.getElementById("checkin-form");
 
-    form.addEventListener("submit", async function (e) {
-      e.preventDefault();
+    if (!form) {
+      console.error("Form non trouvé !");
+    } else {
+      form.addEventListener("submit", async function (e) {
+        e.preventDefault();
 
-      const enterprise = document.getElementById("enterprise").value.trim();
-      if (!enterprise) return;
-      const now = new Date();
+        const enterprise = document.getElementById("enterprise").value.trim();
+        if (!enterprise) return;
 
-      const payload = {
-        name: enterprise,
-        date_heure: now.toLocaleString("fr-FR"),
-        userAgent: navigator.userAgent,
-        page: window.location.href
-      };
+        const payload = {
+          name: enterprise,
+          date_heure: new Date().toLocaleString("fr-FR"),
+          userAgent: navigator.userAgent,
+          page: window.location.href
+        };
 
-      try {
-        await fetch("https://script.google.com/macros/s/AKfycbyTrnIc8mVTnytskshcCGxR-vjx2AsSHioBD-1OYwFClirdlNfSqo_tV1wHk59vZ6t3Fw/exec", {
-          method: "POST",
-          mode: "cors",
-          headers: {
-            "Content-Type": "text/plain;charset=utf-8"
-          },
-          body: JSON.stringify(payload)
-        });
+        console.log("Payload envoyé :", payload);
 
-        window.location.href = "success.html";
-      } catch (err) {
-        console.error(err);
-        alert("Erreur lors de l'enregistrement");
-      }
-    });
+        try {
+          const res = await fetch("https://script.google.com/macros/s/AKfycbyTrnIc8mVTnytskshcCGxR-vjx2AsSHioBD-1OYwFClirdlNfSqo_tV1wHk59vZ6t3Fw/exec", {
+            method: "POST",
+            mode: "cors",
+            headers: {
+              "Content-Type": "text/plain;charset=utf-8"
+            },
+            body: JSON.stringify(payload)
+          });
+
+          console.log("Réponse Apps Script :", res);
+
+          window.location.href = "success.html";
+
+        } catch (err) {
+          console.error("Erreur fetch :", err);
+          alert("Erreur lors de l'enregistrement");
+        }
+      });
+    }
   </script>
 </body>
 </html>
