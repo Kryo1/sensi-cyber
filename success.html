@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oops 👀</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 600px;
+      padding: 40px;
+      background: #111827;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 16px;
+      color: #f87171;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .highlight {
+      color: #38bdf8;
+      font-weight: bold;
+    }
+
+    .tips {
+      text-align: left;
+      margin-top: 30px;
+    }
+
+    .tips li {
+      margin-bottom: 10px;
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 6px;
+      background: #22c55e;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background: #16a34a;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎯 Vous vous êtes fait avoir !</h1>
+
+    <p>
+      Cette page faisait partie d'un exercice de <span class="highlight">sensibilisation à la cybersécurité</span>.
+    </p>
+
+    <p>
+      Vous venez de tomber dans une simulation de <span class="highlight">phishing</span>.
+    </p>
+
+    <p>
+      Dans un contexte réel, cela aurait pu permettre à un attaquant de récupérer vos informations (identifiants, accès, données sensibles...).
+    </p>
+
+    <div class="tips">
+      <h3>🛡️ Comment éviter ce type d’attaque :</h3>
+      <ul>
+        <li>Vérifiez toujours l'URL du site avant de saisir des informations</li>
+        <li>Méfiez-vous des pages trop simples ou urgentes</li>
+        <li>Ne saisissez jamais vos identifiants sans vérifier la source</li>
+	<li>Faites vous confiance !</li>
+      </ul>
+    </div>
+
+    <button onclick="window.location.href='index.html'">Revenir à l'accueil</button>
+  </div>
+</body>
+</html>
+
